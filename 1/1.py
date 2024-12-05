@@ -1,24 +1,29 @@
 import sys
+# import sys to manage the input file
 
 input = sys.argv[1] if len(sys.argv) >= 2 else 'input'
 file = open(input).read().strip()
+# work with the input file and generate 2 list, one left and one right
+
 
 lines = file.split('\n')
 left_list = []
-rigth_list = []
+right_list = []
 
+# put the info in diferent arrays
 for line in lines:
-    left, rigth = line.split()
-    left, rigth = int(left), int(rigth)
+    left, right = line.split()
+    left, right = int(left), int(right)
     left_list.append(left)
-    rigth_list.append(rigth)
+    right_list.append(right)
 
+# order arrays
 left_list = sorted(left_list)
-rigth_list = sorted(rigth_list)
+right_list = sorted(right_list)
 
 ans = 0
 
-for l, r in zip(left_list, rigth_list):
-    ans += abs(l-r)
+for lft, rht in zip(left_list, right_list):
+    ans += abs(lft-rht)
 
 print(ans)
